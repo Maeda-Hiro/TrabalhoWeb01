@@ -1,23 +1,56 @@
+<!-- ● Cadastro de clientes;
+
+Subsistema de Atualização de Perfil
+● Criação de perfil do cliente;
+Subsistema de Comentários e/ou Sugestões
+● Elaboração de comentários. Cada comentário pode representar uma crítica ou sugestão;
+Outras Funcionalidades
+● Login - mecanismo de acesso ao sistema;
+
+
+● Nome
+● Dados pessoais e Informações para contato
+○ RG; CPF; Endereço; Telefone; E-mail
+● Informações para pagamento
+○ Informações de cartão de crédito, de débito e chave(s) pix-->
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login - Sistema de Gerenciamento de Perfil</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <style>
-        .login-container {
-            margin-top: 100px;
-            max-width: 400px;
-            padding: 20px;
-            border: 1px solid #000;
-            border-radius: 4px;
-            background-color: #f9f9f9;
-        }
-    </style>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-theme.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/Trabalho01.css">
+    <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 <body>
+    <h1 class="danger bg-danger text-center">
+        **************Mudar o Nome**************
+    </h1>
     <div class="container">
+        <div class="navbar navbar-default">
+            <div class="navbar-inner">
+                <ul class="nav navbar-nav">
+                    <li><a href="#cadastro">Cadastrar-se</a></li> 
+                    <li><a href="#login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="navbar navbar-default">
+            <div class="navbar-inner">
+                <ul class="nav navbar-nav">
+                    <li><a href="#comentarios">Realizar Comentários</a></li> 
+                    <li><a href="#atualizar">Atualizar Dados</a></li> 
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container center">
         <div class="login-container">
             <h2 class="text-center">Login</h2>
             <form id="loginForm">
@@ -50,8 +83,5 @@
             }
         });
     </script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
