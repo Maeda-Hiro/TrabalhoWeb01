@@ -39,3 +39,20 @@ h4{
 .col1{
     width: 45%;
 }
+
+button#comForm_BtComent{
+    width: 100px;
+}
+
+hr{
+    width: 25%;
+    border-top: 1px solid #606060;
+}
+
+.semConta{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+}

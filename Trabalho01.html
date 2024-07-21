@@ -33,7 +33,7 @@ Outras Funcionalidades
     <h1 class="danger bg-danger text-center">
         **************Mudar o Nome**************
     </h1>
-    <div class="container">
+    <!-- <div class="container">
         <div class="navbar navbar-default">
             <div class="navbar-inner">
                 <ul class="nav navbar-nav">
@@ -42,19 +42,25 @@ Outras Funcionalidades
                 </ul>
             </div>
         </div>
-    </div>
+    </div> -->
+    <!-- <div class="container">
+        <div>
+            <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+            <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+        </div>
+    </div> -->
     <div class="container">
         <div class="navbar navbar-default">
             <div class="navbar-inner">
                 <ul class="nav navbar-nav">
-                    <li><a href="#comentarios">Realizar Comentários</a></li>
+                    <li><a href="#comentarios">Comentários</a></li>
                     <li><a href="#atualizar">Atualizar Dados</a></li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="container">
-        <h2 class="text-center">Cadastro</h2>
+    <div id="cadastro" class="container">
+        <h2>Cadastro</h2>
         <ul class="nav nav-tabs">
             <li class="active"><a href="#cadUsu">Cadastro Usuario</a></li>
             <li><a href="#cadPag">Cadastro Bancarios</a></li>
@@ -142,22 +148,38 @@ Outras Funcionalidades
             </div>
         </div>
     </div>
-    <div class="container center">
+    <div id="login" class="container center">
         <div class="login-container">
             <h2 class="text-center">Login</h2>
             <form id="logForm">
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Digite seu email" required>
+                    <label for="logForm_Email">Email</label>
+                    <input type="email" class="form-control" id="logForm_Email" placeholder="Digite seu email" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Senha</label>
-                    <input type="password" class="form-control" id="password" placeholder="Digite sua senha" required>
+                    <label for="logForm_Senha">Senha</label>
+                    <input type="password" class="form-control" id="logForm_Senha" placeholder="Digite sua senha" required>
                     <a href="#">Esqueceu a senha?</a>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Entrar</button>
             </form>
+            <div class="semConta">
+                <hr>
+                    Não possui uma conta?
+                <hr>
+            </div>
+            <button type="submit" class="btn btn-default btn-block">Cadastrar-se</button>
         </div>
+    </div>
+    <div id="comentarios" class="container">
+        <h2 class="text-center">Comentários</h2>
+        <form id="comForm">
+            <div class="form-group">
+                <label for="comForm_Coment">Comentarios</label>
+                <textarea id="comForm_Coment" class="form-control" rows="4"></textarea>
+            </div>
+            <button id="comForm_BtComent" type="submit" class="btn btn-primary btn-block">Enviar</button>
+        </form>
     </div>
 </body>
 
