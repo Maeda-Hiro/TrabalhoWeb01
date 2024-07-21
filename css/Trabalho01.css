@@ -9,15 +9,33 @@ h4{
 
 .login-container {
     margin-top: 100px;
-    width: 400px;
+    width: 450px;
     padding: 20px;
     border: 1px solid #000;
     border-radius: 4px;
     background-color: #f9f9f9;
 }
 
+.cadastro-container {
+    /* margin-top: 100px; */
+    width: 450px;
+    padding: 20px;
+    /* border: 1px solid #000; */
+    /* border-radius: 4px; */
+    /* background-color: #f9f9f9; */
+}
+
 .center{
     display:flex;
     justify-content: center;
     align-items: center;
+}
+
+.form-cols{    
+    display: flex;
+    justify-content: space-between;
+}
+
+.col1{
+    width: 45%;
 }
