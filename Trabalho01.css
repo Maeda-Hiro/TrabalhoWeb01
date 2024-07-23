@@ -1,0 +1,63 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+h4{
+    font-weight: bold;
+}
+
+.login-container {
+    margin-top: 100px;
+    width: 450px;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.cadastro-container {
+    /* margin-top: 100px; */
+    width: 450px;
+    padding: 20px;
+    /* border: 1px solid #000; */
+    /* border-radius: 4px; */
+    /* background-color: #f9f9f9; */
+}
+
+.center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-cols{    
+    display: flex;
+    justify-content: space-between;
+}
+
+.col1{
+    width: 45%;
+}
+
+button#comForm_BtComent{
+    width: 100px;
+}
+
+hr{
+    width: 25%;
+    border-top: 1px solid #606060;
+}
+
+.semConta{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+.LinksNaoPossuiCadastro{
+    display: flex;
+    justify-content: space-between;
+}
