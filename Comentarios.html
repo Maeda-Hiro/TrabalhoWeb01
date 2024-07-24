@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-    <link type="text/css" rel="stylesheet" href="./bootstrap-theme.min.css" />
-    <link type="text/css" rel="stylesheet" href="./Trabalho01.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-theme.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/Trabalho01.css">
     <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="./Trabalho01.js"></script>
+    <script type="text/javascript" src="js/Trabalho01.js"></script>
     <title>Comentários</title>
 </head>
+
 <body>
-    <div id="comentarios" class="container">
-    <h2 class="text-center">Comentários</h2>
-    <form id="comForm">
-        <div class="form-group">
-            <label for="comForm_Coment">Comentarios</label>
-            <textarea id="comForm_Coment" class="form-control" rows="4"></textarea>
+    <h1 class="danger bg-danger text-center">
+        <a href="./Trabalho01.html">
+            **************Mudar o Nome**************
+        </a>
+    </h1>
+    <div id="Titulo" class="container">
+        <div class="navbar navbar-default">
+            <div class="navbar-inner">
+                <ul class="nav navbar-nav">
+                    <li><a href="./Comentarios.html">Comentários</a></li>
+                    <li><a href="#atualizar">Atualizar Dados</a></li>
+                </ul>
+            </div>
         </div>
-        <button id="comForm_BtComent" type="submit" class="btn btn-primary btn-block">Enviar</button>
-    </form>
-</div>
+    </div>
+    <div id="comentarios" class="container">
+        <h2 class="text-center">Comentários</h2>
+        <form id="comForm">
+            <div class="form-group">
+                <label for="comForm_Coment">Comentarios</label>
+                <textarea id="comForm_Coment" class="form-control" rows="4"></textarea>
+            </div>
+            <button id="comForm_BtComent" type="submit" class="btn btn-primary btn-block">Enviar</button>
+        </form>
+    </div>
 </body>
+
 </html>
