@@ -3,14 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="./bootstrap-theme.min.css" />
+    <link type="text/css" rel="stylesheet" href="./Trabalho01.css">
+    <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./Trabalho01.js"></script>
     <title>Cadastro de Usuário</title>
 </head>
 <body>
+    <div id="Titulo" class="container">
+        <div class="navbar navbar-default">
+            <div class="navbar-inner">
+                <ul class="nav navbar-nav">
+                    <li><a href="./Comentários.html">Comentários</a></li>
+                    <li><a href="#atualizar">Atualizar Dados</a></li>
+                    <li><a href="./Cadastro.html">Não possui cadastro?</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <div id="cadastro" class="container">
         <h2>Cadastro</h2>
-        <!-- <ul class="nav nav-tabs">
+        <ul class="nav nav-tabs">
             <li class="active"><a href="#cadUsu">Cadastro Usuario</a></li>
-            <li><a href="#cadPag">Cadastro Bancarios</a></li> -->
+            <li><a href="#cadPag">Cadastro Bancarios</a></li>
         </ul>
         <div class="tab-content center">
             <div id="cadUsu" class="cadastro-container tab-pane fade in active">
@@ -60,7 +77,7 @@
                                 placeholder="Digite sua Senha " required>
                         </div>
                     </div>
-                    <button id="abc" type="submit" class="btn btn-primary btn-block">Enviar</button>
+                    <button id="cadUsuForm_Enviar" type="submit" class="btn btn-primary btn-block">Enviar</button>
                 </form>
             </div>
             <div id="cadPag" class="cadastro-container tab-pane fade">
