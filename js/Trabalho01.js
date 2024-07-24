@@ -23,10 +23,10 @@ function Eventos() {
 	})
 
 	$("#cadUsuForm_btProx").on('click', function () {
-		$('#Cadastros a[href="#cadPag"]').tab('show')
+		$('#cadCadastros a[href="#cadPag"]').tab('show')
 	})
 	$("#cadUsuForm_btVoltar").on('click', function () {
-		$('#Cadastros a[href="#cadUsu"]').tab('show')
+		$('#cadCadastros a[href="#cadUsu"]').tab('show')
 	})
 	$("#cadUsuForm_btProx").on('click', function () {
 		// $('#Cadastros a[href="#cadPag"]').tab('show')
