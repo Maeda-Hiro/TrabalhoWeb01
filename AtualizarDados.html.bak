@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-    <link type="text/css" rel="stylesheet" href="css/bootstrap-theme.min.css" />
-    <link type="text/css" rel="stylesheet" href="css/Trabalho01.css">
+    <link type="text/css" rel="stylesheet" href="./bootstrap-theme.min.css" />
+    <link type="text/css" rel="stylesheet" href="./Trabalho01.css">
     <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/Trabalho01.js"></script>
+    <script type="text/javascript" src="./Login.html"></script>
     <title>Atualizar Dados de Usuário</title>
 </head>
 <body>
-    <h1 class="danger bg-danger text-center">
-        <a href="./Painel.html">
+    <div id="Titulo" class="container">
+<h1 class="danger bg-danger text-center">
+        <a href="./Trabalho01.html">
             **************Mudar o Nome**************
         </a>
     </h1>
-    <div id="Titulo" class="container">
+    <!-- <div id="Titulo" class="container">
         <div class="navbar navbar-default">
             <div class="navbar-inner">
                 <ul class="nav navbar-nav">
                     <li><a href="./Comentários.html">Comentários</a></li>
-                    <li><a href="./AtualizarDados.html">Atualizar Dados</a></li>
+                    <li><a href="#atualizar">Atualizar Dados</a></li>
                     <li><a href="./Cadastro.html">Não possui cadastro?</a></li>
                 </ul>
             </div>
