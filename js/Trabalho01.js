@@ -21,6 +21,11 @@ function Eventos() {
 		window.open('./Cadastro.html', '_self');
 		// $("#Titulo").hide();
 	})
+	$("#logUsuForm_btPnl").on('click', function () {
+		console.log("Está chegando até aqui")
+		window.open('./Painel.html', '_self');
+		// $("#Titulo").hide();
+	})
 
 	$("#cadUsuForm_btProx").on('click', function () {
 		$('#cadCadastros a[href="#cadPag"]').tab('show')
