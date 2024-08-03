@@ -56,3 +56,14 @@ hr{
     justify-content: space-between;
     padding-top: 20px;
 }
+
+body h1 a{
+    font-size: 35px;
+    color: #000;
+}
+
+body h1 a:hover{
+    font-size: 35px;
+    color: #000;
+    text-decoration: none;
+}
