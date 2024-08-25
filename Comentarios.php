@@ -39,15 +39,32 @@
                                 Campo Comentario deve ser preenchido
                             </p >";
                 }else{
-                    // mudar
-                    // $sql = 'INSERT INTO tabela (nome, comentario) VALUES (?, )'; 
-                    // $stmt = Conexao::getCon()->prepare($sql); 
-                    // $stmt->bindValue(1, $p->getNome());
-                    // $stmt->bindValue(2, $_POST['comForm_Coment']);
-                    // $stmt->execute();
+
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "trabalhoweb01_bd";
+        
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+        
+                    if ($conn->connect_error) {
+                        die("Conexão falhou: " . $conn->connect_error);
+                    }
+
+                    $hoje = date('d/m/Y');
+                    $comentario = $_POST['comForm_Coment'];
+                    echo $hoje;
+                    $sql = 'INSERT INTO comentarios (data, descricao) VALUES (?, ?)'; 
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("ss", $hoje, $comentario);
+                    $stmt->execute();
                     echo "  <p class='success bg-success comSucess'>
                                 Comentario enviado com sucesso
-                                </p >";
+                            </p >";
+                    
+                    
+                    $stmt->close();
+                    $conn->close();
                 }
             }
         ?>
@@ -61,26 +78,31 @@
             <button id="comForm_BtComent" type="submit" class="btn btn-primary btn-block">Enviar</button>
         </form>
         <?php
-            // // mudar
-            // $sql = 'SELECT * FROM tabelaComentario';
-            // $stmt = ConectarBd::getCon()->prepare($sql);
-            // $stmt->execute();
-            // $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "trabalhoweb01_bd";
 
-            // foreach ($resultados as $resultado) {
-            //     echo "  <div class='col-md-4 mb-4'>
-            //                 <div class='card'>
-            //                     <h4 class='text-center mt-4'>{$resultado['nome']}</h4>
-            //                     <h6 class='text-center'>id={$resultado['id']}</h6>
-            //                     <p class='text-center'>{$resultado['descrição']}</p>
-            //                     <p class='text-center'>R$ {$resultado['valor']}</p>
-            //                     <div class='d-flex flex-row justify-content-center mb-4'>
-            //                         <a href='editar.php?id={$resultado['id']}' class='text-light text-decoration-none me-3'><button class='btn btn-primary'>Editar</button></a>
-            //                         <a href='deletar.php?id={$resultado['id']}' class='text-light text-decoration-none ms-3'><button class='btn btn-danger'>Deletar</button></a>
-            //                     </div>
-            //                 </div>
-            //             </div>";
-            //   }
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            if ($conn->connect_error) {
+                die("Conexão falhou: " . $conn->connect_error);
+            }
+
+            $sql = 'SELECT * FROM comentarios';
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            while($row = $result->fetch_assoc()) {
+                echo "  <div class='col-md-4 mb-4'>
+                            <div class='d-flex flex-row justify-content-center mb-4'>
+                                {$row['descricao']}
+                            </div>
+                        </div>";
+              }
+            $stmt->close();
+            $conn->close();
         ?>
             
 

@@ -1,20 +1,15 @@
 <?php
-    use model\ConectarBd;
-
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $servername = "localhost"; // ou 127.0.0.1
-        $username = "root"; // substitua pelo nome de usuário do banco de dados
-        $password = ""; // substitua pela senha do banco de dados
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
         $dbname = "trabalhoweb01_bd";
 
         $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Verificar conexão
-    if ($conn->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error);
-    }
-        // echo $_POST["logForm_Email"];
-        // echo hash('sha256', trim($_POST['logForm_Senha']));
+        if ($conn->connect_error) {
+            die("Conexão falhou: " . $conn->connect_error);
+        }
 
         if(!isset($_POST['logForm_Email'])){
             header('Location: Login.php');
@@ -27,28 +22,19 @@
         }
 
         $emailBusca = trim($_POST['logForm_Email']);
-        // $senhaBusca = hash('sha256', trim($_POST['logForm_Senha']))
-        $senhaBusca = $_POST['logForm_Senha'];
-    // mudar
+        $senhaBusca = hash('sha256', trim($_POST['logForm_Senha']));
         $sql = 'SELECT * FROM usuarios WHERE email LIKE ? AND senha = ?';
         $stmt = $conn->prepare($sql);    
         $stmt->bind_param("ss", $emailBusca, $senhaBusca);
-        // $stmt->bind_param(':senha', $senhaBusca, PDO::PARAM_STR);
         $stmt->execute();
-        // $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        // if($resultados == ""){
-        //     header('Location: Login.php');
-        //     echo "asadas";
-        // }
         $result = $stmt->get_result();
 
+        // echo "<input type='hidden' id='cfpUsu' name='cpfUsu' value='{$result->fetch_assoc()['cpf']}'> ";
         if ($result->num_rows > 0) {
-            // Processa os resultados
             while($row = $result->fetch_assoc()) {
                 echo "ID: " . $row["id"]. " - Nome: " . $row["nome"]. " - Email: " . $row["email"]. "<br>";
             }
         } else {
-            echo "0 resultados";
             header('Location: Login.php');
             exit;
         }
@@ -78,9 +64,11 @@
         <div class="navbar navbar-default">
             <div class="navbar-inner">
                 <ul class="nav navbar-nav">
-                    <li><a href="./Comentarios.php">Comentários</a></li>
-                    <li><a href="./AtualizarDados.php">Atualizar Dados</a></li>
-                    <li><a href="./Login.php">Sair</a></li>
+                    <?php
+                        <li><a href='./Comentarios.php?id={$result->fetch_assoc()['id']}'>Comentários</a></li>
+                        <li><a href='./AtualizarDados.php?id={$result->fetch_assoc()['id']}'>Atualizar Dados</a></li>
+                        <li><a href='./Login.php?id={$result->fetch_assoc()['id']}'>Sair</a></li>
+                    ?>
                 </ul>
             </div>
         </div>
