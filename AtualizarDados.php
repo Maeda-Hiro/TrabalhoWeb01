@@ -15,7 +15,7 @@
 
 <body>
     <h1 class="danger bg-danger text-center">
-        <a href="./Painel.html">
+        <a href="./Painel.php">
             Gerenciamento de Perfil
         </a>
     </h1>
@@ -23,9 +23,9 @@
         <div class="navbar navbar-default">
             <div class="navbar-inner">
                 <ul class="nav navbar-nav">
-                    <li><a href="./Comentarios.html">Comentários</a></li>
-                    <li><a href="./AtualizarDados.html">Atualizar Dados</a></li>
-                    <li><a href="./Login.html">Sair</a></li>
+                    <li><a href="./Comentarios.php">Comentários</a></li>
+                    <li><a href="./AtualizarDados.php">Atualizar Dados</a></li>
+                    <li><a href="./Login.php">Sair</a></li>
                 </ul>
             </div>
         </div>
