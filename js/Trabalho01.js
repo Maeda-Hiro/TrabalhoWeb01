@@ -19,52 +19,53 @@ function Eventos() {
 	$("#botaoDeCadastro").on('click', function () {
 		window.open('./Cadastro.php', '_self');
 	})
+
 	// $("#logUsuForm_btPnl").on('click', function () {
 	// 	window.open('./Painel.php', '_self');
 	// })
 
 
-	$("#cadUsuForm_btProx").on('click', function () {
-		let alerta = validaFormCadUsu();
-		if (alerta != ""){
-			alert(alerta);
-		}else{
-			$('#cadCadastros a[href="#cadPag"]').tab('show')
-		}
-	})
-	$("#cadUsuForm_btVoltar").on('click', function () {
-		$('#cadCadastros a[href="#cadUsu"]').tab('show')
-	})
-	$("#cadUsuForm_btSalvar").on('click', function () {
-		let alerta = validaCadPag();
-		if (alerta == ""){
-			alert(alerta);
-		}else{
-			alert("Dados Cadastrados com sucesso.");
-			window.open('./Painel.php', '_self');
-		}
-	})
+	// $("#cadUsuForm_btProx").on('click', function () {
+	// 	let alerta = validaFormCadUsu();
+	// 	if (alerta != ""){
+	// 		alert(alerta);
+	// 	}else{
+	// 		$('#cadCadastros a[href="#cadPag"]').tab('show')
+	// 	}
+	// })
+	// $("#cadUsuForm_btVoltar").on('click', function () {
+	// 	$('#cadCadastros a[href="#cadUsu"]').tab('show')
+	// })
+	// $("#cadUsuForm_btSalvar").on('click', function () {
+	// 	let alerta = validaCadPag();
+	// 	if (alerta == ""){
+	// 		alert(alerta);
+	// 	}else{
+	// 		alert("Dados Cadastrados com sucesso.");
+	// 		// window.open('./Painel.php', '_self');
+	// 	}
+	// })
 
-	$("#altUsuForm_btProx").on('click', function () {
-		let alerta = validaFormAltUsu();
-		if (alerta != ""){
-			alert(alerta);
-		}else{
-			$('#altCadastros a[href="#altPag"]').tab('show')
-		}
-	})
-	$("#altUsuForm_btVoltar").on('click', function () {
-		$('#altCadastros a[href="#altUsu"]').tab('show')
-	})
-	$("#altUsuForm_btSalvar").on('click', function () {
-		let alerta = validaAltPag();
-		if (alerta == ""){
-			alert(alerta);
-		}else{
-			alert("Dados Salvos com sucesso.");
-			window.open('./Painel.php', '_self');
-		}
-	})
+	// $("#altUsuForm_btProx").on('click', function () {
+	// 	let alerta = validaFormAltUsu();
+	// 	if (alerta != ""){
+	// 		alert(alerta);
+	// 	}else{
+	// 		$('#altCadastros a[href="#altPag"]').tab('show')
+	// 	}
+	// })
+	// $("#altUsuForm_btVoltar").on('click', function () {
+	// 	$('#altCadastros a[href="#altUsu"]').tab('show')
+	// })
+	// $("#altUsuForm_btSalvar").on('click', function () {
+	// 	let alerta = validaAltPag();
+	// 	if (alerta == ""){
+	// 		alert(alerta);
+	// 	}else{
+	// 		alert("Dados Salvos com sucesso.");
+	// 		window.open('./Painel.php', '_self');
+	// 	}
+	// })
 }
 
 
