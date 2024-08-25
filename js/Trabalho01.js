@@ -17,11 +17,11 @@ function ConfiguraTabs() {
 
 function Eventos() {
 	$("#botaoDeCadastro").on('click', function () {
-		window.open('./Cadastro.html', '_self');
+		window.open('./Cadastro.php', '_self');
 	})
-	$("#logUsuForm_btPnl").on('click', function () {
-		window.open('./Painel.html', '_self');
-	})
+	// $("#logUsuForm_btPnl").on('click', function () {
+	// 	window.open('./Painel.php', '_self');
+	// })
 
 
 	$("#cadUsuForm_btProx").on('click', function () {
@@ -41,7 +41,7 @@ function Eventos() {
 			alert(alerta);
 		}else{
 			alert("Dados Cadastrados com sucesso.");
-			window.open('./Painel.html', '_self');
+			window.open('./Painel.php', '_self');
 		}
 	})
 
@@ -62,7 +62,7 @@ function Eventos() {
 			alert(alerta);
 		}else{
 			alert("Dados Salvos com sucesso.");
-			window.open('./Painel.html', '_self');
+			window.open('./Painel.php', '_self');
 		}
 	})
 }
