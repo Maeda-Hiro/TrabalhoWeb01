@@ -29,7 +29,7 @@
             <!-- <div role="tab-content"> -->
                 <div id="cadUsu" class="cadastro-container tab-pane fade in active">
                     <h3 class="text-center">Dados pessoais</h3>
-                    <form id="cadUsuForm" action="./ValidaCadastro.php" method="POST">
+                    <form id="cadUsuForm" action="./teste.php" method="POST">
                         <div class="form-group">
                             <label for="cadUsuForm_Nome">Nome</label>
                             <input type="text" class="form-control" id="cadUsuForm_Nome" name="cadUsuForm_Nome" placeholder="Digite seu Nome"
@@ -82,11 +82,11 @@
                             if($_SERVER['REQUEST_METHOD'] === 'POST'){
                                 // echo $_POST["cadUsuForm"];
 
-                                if(isset($_POST["cadUsuForm_btProx"])){
-                                    echo "Form 1 have been submitted";
-                                } else if(isset($_POST["cadUsuForm_btSalvar"])){
-                                    echo "Form 2 have been submitted";
-                                }
+                                // if(isset($_POST["cadUsuForm_btProx"])){
+                                //     echo "Form 1 have been submitted";
+                                // } else if(isset($_POST["cadUsuForm_btSalvar"])){
+                                //     echo "Form 2 have been submitted";
+                                // }
                                 // echo hash('sha256', trim($_POST['logForm_Senha']));
 
                                 if(!isset($_POST['cadUsuForm_Nome'])){
