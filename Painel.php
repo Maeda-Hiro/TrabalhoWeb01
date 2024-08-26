@@ -1,4 +1,8 @@
 <?php
+    if($_GET["id"] > 0){
+        $id = $_GET["id"];
+    }
+
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $servername = "localhost";
         $username = "root";
@@ -28,6 +32,9 @@
         $stmt->bind_param("ss", $emailBusca, $senhaBusca);
         $stmt->execute();
         $result = $stmt->get_result();
+        if($id = 0){
+            $id = $result->fetch_assoc()['id'];
+        }
 
         // echo "<input type='hidden' id='cfpUsu' name='cpfUsu' value='{$result->fetch_assoc()['cpf']}'> ";
         if ($result->num_rows > 0) {
@@ -56,23 +63,24 @@
 </head>
 <body>
     <h1 class="danger bg-danger text-center">
-        <a href="./Painel.php">
-            Gerenciamento de Perfil
-        </a>
-    </h1>
-    <div id="Titulo" class="container">
-        <div class="navbar navbar-default">
-            <div class="navbar-inner">
-                <ul class="nav navbar-nav">
-                    <?php
-                        <li><a href='./Comentarios.php?id={$result->fetch_assoc()['id']}'>Comentários</a></li>
-                        <li><a href='./AtualizarDados.php?id={$result->fetch_assoc()['id']}'>Atualizar Dados</a></li>
-                        <li><a href='./Login.php?id={$result->fetch_assoc()['id']}'>Sair</a></li>
-                    ?>
-                </ul>
+    <?php
+        echo"
+            <a href='./Painel.php?id={$id}'>
+                Gerenciamento de Perfil
+            </a>
+        </h1>
+        <div id='Titulo' class='container'>
+            <div class='navbar navbar-default'>
+                <div class='navbar-inner'>
+                    <ul class='nav navbar-nav'>
+                        <li><a href='./Comentarios.php?id={$id}'>Comentários</a></li>
+                        <li><a href='./AtualizarDados.php?id={$id}'>Atualizar Dados</a></li>
+                        <li><a href='./Login.php?id={$id}'>Sair</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </div>
-    
+        </div>";
+    ?>
+        
 </body>
 </html>

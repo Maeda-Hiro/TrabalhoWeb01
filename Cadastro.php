@@ -14,16 +14,19 @@
 </head>
 
 <body>
-    <h1 class="danger bg-danger text-center">
-        <a href="./Painel.php">
-            Gerenciamento de Perfil
-        </a>
-    </h1>
-    <div class="container center">
-        <h2>Cadastro</h2>
-        <div class="tab-content center">
-            <h3 class="text-center">Dados pessoais</h3>
-            <form id="cadUsuForm" action="./Login.php" method="POST">
+    <?php
+        $id = $_GET["id"];
+        echo "  <h1 class='danger bg-danger text-center'>
+                <a href='./Painel.php?id={$id}'>
+                    Gerenciamento de Perfil
+                </a>
+            </h1>
+            <div class='container center'>
+                <h2>Cadastro</h2>
+                <div class='tab-content center'>
+                    <h3 class='text-center'>Dados pessoais</h3>
+                    <form id='cadUsuForm' action='./Login.php?id={$id}' method='POST'>";
+    ?>
                 <div class="form-group">
                     <label for="cadUsuForm_Nome">Nome</label>
                     <input type="text" class="form-control" id="cadUsuForm_Nome" name="cadUsuForm_Nome" placeholder="Digite seu Nome"

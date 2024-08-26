@@ -15,23 +15,25 @@
 
 <body>
     <h1 class="danger bg-danger text-center">
-        <a href="./Painel.php">
-            Gerenciamento de Perfil
-        </a>
-    </h1>
-    <div id="Titulo" class="container">
-        <div class="navbar navbar-default">
-            <div class="navbar-inner">
-                <ul class="nav navbar-nav">
-                    <li><a href="./Comentarios.php">Comentários</a></li>
-                    <li><a href="./AtualizarDados.php">Atualizar Dados</a></li>
-                    <li><a href="./Login.php">Sair</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div id="comentarios" class="container">
         <?php
+        $id = $_GET["id"];
+        echo"   <a href='./Painel.php?id={$id}'>
+                    Gerenciamento de Perfil
+                </a>
+            </h1>
+            <div id='Titulo' class='container'>
+                <div class='navbar navbar-default'>
+                    <div class='navbar-inner'>
+                        <ul class='nav navbar-nav'>
+                            <li><a href='./Comentarios.php?id={$id}'>Comentários</a></li>
+                            <li><a href='./AtualizarDados.php?id={$id}'>Atualizar Dados</a></li>
+                            <li><a href='./Login.php?id={$id}'>Sair</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id='comentarios' class='container'>";
+
             if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
                 if(!isset($_POST['comForm_Coment']) || $_POST['comForm_Coment'] == ""){
@@ -54,9 +56,9 @@
                     $hoje = date('d/m/Y');
                     $comentario = $_POST['comForm_Coment'];
                     echo $hoje;
-                    $sql = 'INSERT INTO comentarios (data, descricao) VALUES (?, ?)'; 
+                    $sql = 'INSERT INTO comentarios (id_usuario, data, descricao) VALUES (?, ?, ?)'; 
                     $stmt = $conn->prepare($sql);
-                    $stmt->bind_param("ss", $hoje, $comentario);
+                    $stmt->bind_param("iss", $id, $hoje, $comentario);
                     $stmt->execute();
                     echo "  <p class='success bg-success comSucess'>
                                 Comentario enviado com sucesso
@@ -67,17 +69,15 @@
                     $conn->close();
                 }
             }
-        ?>
+            echo "  <h2 class='text-center'>Comentários</h2>
+                    <form id='comForm' action='./Comentarios.php?id={$id}' method='POST'>
+                        <div class='form-group'>
+                            <label for='comForm_Coment'>Comentarios</label>
+                            <textarea id='comForm_Coment' name='comForm_Coment' class='form-control' rows='4'></textarea>
+                        </div>
+                        <button id='comForm_BtComent' type='submit' class='btn btn-primary btn-block'>Enviar</button>
+                    </form>";
 
-        <h2 class="text-center">Comentários</h2>
-        <form id="comForm" action="./Comentarios.php" method="POST">
-            <div class="form-group">
-                <label for="comForm_Coment">Comentarios</label>
-                <textarea id="comForm_Coment" name="comForm_Coment" class="form-control" rows="4"></textarea>
-            </div>
-            <button id="comForm_BtComent" type="submit" class="btn btn-primary btn-block">Enviar</button>
-        </form>
-        <?php
             $servername = "localhost";
             $username = "root";
             $password = "";
