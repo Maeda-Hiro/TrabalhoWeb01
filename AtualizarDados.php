@@ -62,7 +62,7 @@
                             <ul class='nav navbar-nav'>
                                 <li><a href='./Comentarios.php?id={$id}'>Comentários</a></li>
                                 <li><a href='./AtualizarDados.php?id={$id}'>Atualizar Dados</a></li>
-                                <li><a href='./Login.php?id={$id}'>Sair</a></li>
+                                <li><a href='./Login.php'>Sair</a></li>
                             </ul>
                         </div>
                     </div>
