@@ -1,8 +1,5 @@
 <?php
-    if($_GET["id"] > 0){
-        $id = $_GET["id"];
-    }
-
+    $id;
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $servername = "localhost";
         $username = "root";
@@ -32,9 +29,7 @@
         $stmt->bind_param("ss", $emailBusca, $senhaBusca);
         $stmt->execute();
         $result = $stmt->get_result();
-        if($id = 0){
-            $id = $result->fetch_assoc()['id'];
-        }
+        $id = $result->fetch_assoc()['id'];
 
         // echo "<input type='hidden' id='cfpUsu' name='cpfUsu' value='{$result->fetch_assoc()['cpf']}'> ";
         if ($result->num_rows > 0) {
@@ -45,6 +40,8 @@
             header('Location: Login.php');
             exit;
         }
+    }else{
+        $id = $_GET["id"];
     }
 
 ?>
@@ -75,7 +72,7 @@
                     <ul class='nav navbar-nav'>
                         <li><a href='./Comentarios.php?id={$id}'>Comentários</a></li>
                         <li><a href='./AtualizarDados.php?id={$id}'>Atualizar Dados</a></li>
-                        <li><a href='./Login.php?id={$id}'>Sair</a></li>
+                        <li><a href='./Login.php'>Sair</a></li>
                     </ul>
                 </div>
             </div>
