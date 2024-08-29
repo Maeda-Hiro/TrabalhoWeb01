@@ -95,11 +95,26 @@
             $result = $stmt->get_result();
 
             while($row = $result->fetch_assoc()) {
-                echo "  <div class='col-md-4 mb-4'>
-                            <div class='d-flex flex-row justify-content-center mb-4'>
-                                {$row['descricao']}
+                $sql = 'SELECT * FROM usuarios WHERE id = ?';
+                $stmt = $conn->prepare($sql);    
+                $stmt->bind_param("i", $row['id_usuario']);
+                $stmt->execute();
+                $usuarios = $stmt->get_result();
+                $usuario = $usuarios->fetch_assoc();
+
+                echo "  
+                    <br>
+                    <div class='center'> 
+                        <div class='comentarioForms'>
+                            <div class='comentarioMar'>    
+                                <div class='nomeComentario'>{$usuario['nome']}</div>
                             </div>
-                        </div>";
+                            <div class='comentario comentarioMar'>
+                                <p>{$row['descricao']}</p>
+                                <div class='datComentario'>{$row['data']}</div>
+                            </div>
+                        </div>
+                    </div>  ";
               }
             $stmt->close();
             $conn->close();

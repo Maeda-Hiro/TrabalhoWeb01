@@ -72,3 +72,34 @@ body h1 a:hover{
 .comSucess{
     padding: 5px;
 }
+
+.comentario{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nomeComentario{
+    font-weight: bold;
+     font-size: 15px;
+}
+
+div div div p{
+    margin: 0px;
+    word-wrap: break-word;  
+    overflow-wrap: anywhere;
+}
+
+.comentarioForms{
+    border: 1px solid #bbbbbb;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.comentarioMar{
+    margin: 10px;
+}
+
+.datComentario{
+    text-align: left; 
+    width: fit-content
+}
