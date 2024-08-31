@@ -51,31 +51,14 @@
                 $pix = $_POST['altPagForm_Pix'];
                 $id_bancario = $_POST['altPagForm_idBancario'];
 
-                $sql = "SELECT * FROM usuarios WHERE email = ? OR rg = ? OR cpf = ?";
-                $stmt = $conn->prepare($sql);
-                $stmt->bind_param("sii", $email, $rg, $cpf);
-                $stmt->execute();
-                $result = $stmt->get_result();
-
-                if ($result->num_rows > 0) {
-                    header('Location: AtualizarDados.php?id='.$id);
-                    exit;
-                }
-
                 $sql = "UPDATE usuarios SET email = ?, senha = ?, nome = ?, rg = ?, cpf = ?, endereco = ?, fone = ? WHERE id = ?";
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("sssiisii", $email, $senha, $nome, $rg, $cpf, $endereco, $fone, $id);
                 $stmt->execute();
 
-                $sql = "SELECT id FROM usuarios WHERE cpf = ?";
+                $sql = "UPDATE dados_bancarios SET n_cartao = ?, nome_cartao = ?, ccv = ?, validade = ?, pix = ? WHERE id_usuario = ? AND id_dados_bancarios = ?";
                 $stmt = $conn->prepare($sql);
-                $stmt->bind_param("i", $cpf);
-                $stmt->execute();
-                $result = $stmt->get_result();
-
-                $sql = "UPDATE dados_bancarios SET n_cartao = ?, nome_cartao = ?, ccv = ?, validade = ?, pix = ? WHERE id_usuario = ?, id_dados_bancarios = ?";
-                $stmt = $conn->prepare($sql);
-                $stmt->bind_param("isissii", $numCar, $nomeCar, $ccvCar, $valCar, $pix, $result->fetch_assoc()['id'], $id_bancario);
+                $stmt->bind_param("isissii", $numCar, $nomeCar, $ccvCar, $valCar, $pix, $id, $id_bancario);
                 $stmt->execute();
 
             }
@@ -101,7 +84,6 @@
             $stmt->close();
             $conn->close();
             
-            var_dump($id);
             echo "  <a href='./Painel.php?id={$id}'>
                         Gerenciamento de Perfil
                     </a>
