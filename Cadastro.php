@@ -15,9 +15,9 @@
 
 <body>
     <?php
-        $id = $_GET["id"];
+        // $id = $_GET["id"];
         echo "  <h1 class='danger bg-danger text-center'>
-                <a href='./Painel.php?id={$id}'>
+                <a href='./Painel.php'>
                     Gerenciamento de Perfil
                 </a>
             </h1>
@@ -25,7 +25,7 @@
                 <h2>Cadastro</h2>
                 <div class='tab-content center'>
                     <h3 class='text-center'>Dados pessoais</h3>
-                    <form id='cadUsuForm' action='./Login.php?id={$id}' method='POST'>";
+                    <form id='cadUsuForm' action='./Login.php' method='POST'>";
     ?>
                 <div class="form-group">
                     <label for="cadUsuForm_Nome">Nome</label>
@@ -92,7 +92,7 @@
                     </div>
                     <div class="col1">
                         <label for="cadPagForm_val">Validade</label>
-                        <input type="number" class="form-control" id="cadPagForm_val" name="cadPagForm_val"
+                        <input type="text" class="form-control" id="cadPagForm_val" name="cadPagForm_val"
                             placeholder="Digite a Validade">
                     </div>
                 </div>

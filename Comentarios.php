@@ -53,12 +53,14 @@
                         die("Conexão falhou: " . $conn->connect_error);
                     }
 
-                    $hoje = date('d/m/Y');
+                    $data_ymd = date('d/m/Y');
+                    $data_createFormat = DateTime::createFromFormat('d/m/Y', $data_ymd);
+                    $data_padrao = $data_createFormat->format('Y-m-d');
                     $comentario = $_POST['comForm_Coment'];
-                    echo $hoje;
-                    $sql = 'INSERT INTO comentarios (id_usuario, data, descricao) VALUES (?, ?, ?)'; 
+
+                    $sql = 'INSERT INTO comentarios (id_usuario, data_coment, descricao) VALUES (?, ?, ?)'; 
                     $stmt = $conn->prepare($sql);
-                    $stmt->bind_param("iss", $id, $hoje, $comentario);
+                    $stmt->bind_param("iss", $id, $data_padrao, $comentario);
                     $stmt->execute();
                     echo "  <p class='success bg-success comSucess'>
                                 Comentario enviado com sucesso
@@ -111,7 +113,7 @@
                             </div>
                             <div class='comentario comentarioMar'>
                                 <p>{$row['descricao']}</p>
-                                <div class='datComentario'>{$row['data']}</div>
+                                <div class='datComentario'>{$row['data_coment']}</div>
                             </div>
                         </div>
                     </div>  ";
