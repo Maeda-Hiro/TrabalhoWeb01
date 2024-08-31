@@ -28,13 +28,63 @@
                 die("Conexão falhou: " . $conn->connect_error);
             }
 
+            if($_SERVER['REQUEST_METHOD'] === 'POST'){
+                if(hash('sha256', trim($_POST['altUsuForm_Senha'])) != hash('sha256', trim($_POST['altUsuForm_ConfSenha']))){
+                    echo "<p class='danger bg-danger comSucess'>
+                            Senhas não coincidem
+                        </p >";
+                    exit;
+                }
+
+                $email = $_POST['altUsuForm_Email'];
+                $senha = hash('sha256', trim($_POST['altUsuForm_Senha']));
+                $nome = $_POST['altUsuForm_Nome'];
+                $rg = $_POST['altUsuForm_Rg'];
+                $cpf = $_POST['altUsuForm_Cpf'];
+                $endereco = $_POST['altUsuForm_Ender'];
+                $fone = $_POST['altUsuForm_Fone'];
+
+                $numCar = $_POST['altPagForm_NumCartao'];
+                $nomeCar = $_POST['altPagForm_NomeCartao'];
+                $ccvCar = $_POST['altPagForm_Ccv'];
+                $valCar = $_POST['altPagForm_val'];
+                $pix = $_POST['altPagForm_Pix'];
+                $id_bancario = $_POST['altPagForm_idBancario'];
+
+                $sql = "SELECT * FROM usuarios WHERE email = ? OR rg = ? OR cpf = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("sii", $email, $rg, $cpf);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    header('Location: AtualizarDados.php?id='.$id);
+                    exit;
+                }
+
+                $sql = "UPDATE usuarios SET email = ?, senha = ?, nome = ?, rg = ?, cpf = ?, endereco = ?, fone = ? WHERE id = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("sssiisii", $email, $senha, $nome, $rg, $cpf, $endereco, $fone, $id);
+                $stmt->execute();
+
+                $sql = "SELECT id FROM usuarios WHERE cpf = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $cpf);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                $sql = "UPDATE dados_bancarios SET n_cartao = ?, nome_cartao = ?, ccv = ?, validade = ?, pix = ? WHERE id_usuario = ?, id_dados_bancarios = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("isissii", $numCar, $nomeCar, $ccvCar, $valCar, $pix, $result->fetch_assoc()['id'], $id_bancario);
+                $stmt->execute();
+
+            }
+
             $sql = 'SELECT * FROM usuarios WHERE id = ?';
             $stmt = $conn->prepare($sql);    
             $stmt->bind_param("i", $id);
             $stmt->execute();
             $result = $stmt->get_result();
-// [            $stmt->close();
-//             $conn->close();]
             if ($result->num_rows > 0) {
                 $usuario = $result->fetch_assoc();
             }
@@ -48,10 +98,10 @@
                 $pagamento = $resultado->fetch_assoc();
             }
 
-                // while($row = $result->fetch_assoc()) {
-                //     echo "ID: " . $row["id"]. " - Nome: " . $row["nome"]. " - Email: " . $row["email"]. "<br>";
-                // }
+            $stmt->close();
+            $conn->close();
             
+            var_dump($id);
             echo "  <a href='./Painel.php?id={$id}'>
                         Gerenciamento de Perfil
                     </a>
@@ -117,11 +167,12 @@
                                 </div>
                             </div>";
                             
-            foreach($pagamento as $pag){
+            foreach([$pagamento] as $pag){
                 echo"
                             <BR>
                             <BR>
                             <h3 class='text-center'>Dados Pagamento</h3>
+                            <input type='hidden' name='altPagForm_idBancario' value='{$pag['id_dados_bancarios']}'>
                             <div class='form-group'>
                                 <label for='altPagForm_NumCartao'>N° cartão</label>
                                 <input type='number' class='form-control' id='altPagForm_NumCartao' name='altPagForm_NumCartao' value='{$pag['n_cartao']}'
@@ -140,7 +191,7 @@
                                 </div>
                                 <div class='col1'>
                                     <label for='altPagForm_val'>Validade</label>
-                                    <input type='number' class='form-control' id='altPagForm_val' name='altPagForm_val' value='{$pag['validade']}'
+                                    <input type='text' class='form-control' id='altPagForm_val' name='altPagForm_val' value='{$pag['validade']}'
                                         placeholder='Digite a Validade'>
                                 </div>
                             </div>
