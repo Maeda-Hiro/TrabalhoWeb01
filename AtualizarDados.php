@@ -81,6 +81,31 @@
                 $pagamento = $resultado->fetch_assoc();
             }
 
+            if (isset($_POST['altUsuForm_btExcluir'])) {
+            
+                $sql = 'DELETE FROM comentarios WHERE id_usuario = ?';
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $id);
+                $stmt->execute();
+
+                $sql = 'DELETE FROM dados_bancarios WHERE id_usuario = ?';
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $id);
+                $stmt->execute();
+
+                $sql = 'DELETE FROM usuarios WHERE id = ?';
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $id);
+                $stmt->execute();
+            
+                if ($stmt->execute()) {
+                    header("Location: Login.php");
+                    echo "Usuário excluído com sucesso!";
+                } else {
+                    echo "Erro ao excluir o usuário: " . $stmt->error;
+                }
+            }
+
             $stmt->close();
             $conn->close();
             
@@ -186,6 +211,8 @@
                 ?>
                 <div class='form-cols'>
                     <button id='altUsuForm_btSalvar' type='submit' class='btn btn-primary btn-block'>Salvar</button>
+                    <button name='altUsuForm_btExcluir' type='submit' class='btn btn-primary btn-block' onclick="return confirm('Tem certeza que deseja excluir este usuário?')">Excluir Usuário</button>
+                
                 </div>
             </form>
         </div>
